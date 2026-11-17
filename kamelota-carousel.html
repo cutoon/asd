@@ -1,0 +1,911 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Kamelota — Apgrozījums aug. Peļņa — nulle.</title>
+<style>
+  :root{
+    --cream:#F6F1E6;
+    --cream-2:#EFE6D6;
+    --ink:#0F2B27;
+    --ink-70:rgba(15,43,39,.72);
+    --ink-55:rgba(15,43,39,.55);
+    --teal:#2D8380;
+    --teal-deep:#123B38;
+    --teal-soft:#DCEBE6;
+    --coral:#E4634A;
+    --coral-soft:#FF8C72;
+    --line:rgba(15,43,39,.16);
+    --line-light:rgba(246,241,230,.22);
+    --serif:"Palatino Linotype","Book Antiqua",Georgia,"Times New Roman",serif;
+    --sans:"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:#D9D2C4;
+    font-family:var(--sans);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  .deck{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:44px;
+    padding:44px 0;
+  }
+
+  .slide{
+    position:relative;
+    width:1080px;
+    height:1350px;
+    flex:none;
+    overflow:hidden;
+    background:var(--cream);
+    background-image:
+      radial-gradient(circle at 12% 6%, rgba(45,131,128,.065), transparent 38%),
+      radial-gradient(circle at 92% 96%, rgba(228,99,74,.045), transparent 42%);
+    color:var(--ink);
+    padding:64px 80px 58px;
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* ---------- shared chrome ---------- */
+  .top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-bottom:22px;
+    border-bottom:1px solid var(--line);
+    flex:none;
+    position:relative;
+    z-index:3;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+  }
+  .brand-mark{
+    width:22px;
+    height:22px;
+    background:var(--teal);
+    position:relative;
+    flex:none;
+  }
+  .brand-mark::after{
+    content:"";
+    position:absolute;
+    inset:6px;
+    border:1px solid var(--cream);
+  }
+  .counter{
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.2em;
+    color:var(--ink-55);
+    font-variant-numeric:tabular-nums;
+  }
+
+  .main{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    position:relative;
+    z-index:2;
+    padding:38px 0 20px;
+  }
+
+  .label{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:26px;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.26em;
+    text-transform:uppercase;
+    color:var(--teal);
+  }
+  .label::before{
+    content:"";
+    width:42px;
+    height:1px;
+    background:currentColor;
+    opacity:.85;
+  }
+
+  h1,h2,p{margin:0;}
+  h1,h2{
+    font-family:var(--serif);
+    font-weight:400;
+    letter-spacing:-.035em;
+  }
+  h2{
+    font-size:88px;
+    line-height:1.01;
+  }
+  h2 em{
+    font-style:italic;
+    color:var(--teal);
+  }
+  .body{
+    margin-top:32px;
+    max-width:700px;
+    font-size:30px;
+    line-height:1.45;
+    color:var(--ink-70);
+    letter-spacing:-.005em;
+  }
+
+  .footer{
+    flex:none;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-top:1px solid var(--line);
+    padding-top:18px;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--ink-55);
+    position:relative;
+    z-index:3;
+  }
+
+  /* ---------- 01 cover ---------- */
+  .cover{
+    background:var(--teal);
+    background-image:
+      linear-gradient(rgba(246,241,230,.075) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(246,241,230,.075) 1px, transparent 1px),
+      radial-gradient(circle at 82% 18%, rgba(246,241,230,.14), transparent 42%);
+    background-size:90px 90px, 90px 90px, auto;
+    color:var(--cream);
+  }
+  .cover .top{border-bottom-color:var(--line-light);}
+  .cover .brand-mark{background:var(--cream);}
+  .cover .brand-mark::after{border-color:var(--teal);}
+  .cover .counter{color:rgba(246,241,230,.62);}
+  .cover .main{
+    justify-content:flex-end;
+    padding:0 0 66px;
+  }
+  .cover .kicker{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:28px;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:rgba(246,241,230,.78);
+  }
+  .cover .kicker::before{
+    content:"";
+    width:42px;
+    height:1px;
+    background:currentColor;
+  }
+  .cover h1{
+    font-size:112px;
+    line-height:.98;
+    letter-spacing:-.038em;
+    max-width:900px;
+  }
+  .cover h1 em{
+    font-style:italic;
+    color:var(--coral-soft);
+  }
+  .cover .sub{
+    margin-top:34px;
+    max-width:610px;
+    font-size:29px;
+    line-height:1.45;
+    color:rgba(246,241,230,.8);
+  }
+  .cover .swipe{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-top:52px;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:rgba(246,241,230,.72);
+  }
+  .swipe-arrow{
+    width:54px;
+    height:54px;
+    border:1px solid rgba(246,241,230,.45);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    letter-spacing:0;
+    color:var(--cream);
+  }
+  .ghost-zero{
+    position:absolute;
+    right:-70px;
+    bottom:-190px;
+    font-family:var(--serif);
+    font-size:940px;
+    line-height:.72;
+    color:rgba(246,241,230,.075);
+    z-index:1;
+    pointer-events:none;
+    font-variant-numeric:lining-nums;
+  }
+  .cover .footer{
+    border-top-color:var(--line-light);
+    color:rgba(246,241,230,.55);
+  }
+
+  /* ---------- 02 problem ---------- */
+  .chart-wrap{
+    margin-top:46px;
+    border-top:1px solid var(--line);
+    padding-top:24px;
+  }
+  .legend{
+    display:flex;
+    gap:30px;
+    align-items:center;
+    margin-bottom:8px;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+  }
+  .legend span{display:flex;align-items:center;gap:9px;color:var(--ink-55);}
+  .legend i{width:20px;height:3px;display:block;background:var(--teal);}
+  .legend .profit i{background:var(--coral);}
+  .chart{display:block;width:100%;height:250px;}
+
+  /* ---------- 03 example table ---------- */
+  .table-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-top:44px;
+    margin-bottom:10px;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--ink-55);
+  }
+  .table-head .units{font-size:11px;letter-spacing:.16em;}
+  .table{border-top:2px solid var(--ink);}
+  .row{
+    display:grid;
+    grid-template-columns:1fr 150px 54px 170px;
+    align-items:center;
+    gap:10px;
+    padding:27px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .row .name{
+    font-size:30px;
+    font-weight:600;
+    letter-spacing:-.01em;
+  }
+  .row .from{
+    font-family:var(--serif);
+    font-size:52px;
+    text-align:right;
+    color:var(--ink-55);
+    font-variant-numeric:lining-nums tabular-nums;
+  }
+  .row .arrow{
+    font-size:26px;
+    text-align:center;
+    color:var(--teal);
+  }
+  .row .to{
+    font-family:var(--serif);
+    font-size:60px;
+    text-align:right;
+    font-variant-numeric:lining-nums tabular-nums;
+  }
+  .row.profit{
+    margin-top:10px;
+    padding:30px 34px;
+    border:0;
+    background:var(--ink);
+    color:var(--cream);
+    grid-template-columns:1fr 130px 44px 160px;
+  }
+  .row.profit .name{font-size:28px;color:rgba(246,241,230,.72);}
+  .row.profit .from{color:rgba(246,241,230,.5);font-size:48px;}
+  .row.profit .arrow{color:var(--coral-soft);}
+  .row.profit .to{color:var(--coral-soft);font-size:62px;}
+  .table-note{
+    margin-top:18px;
+    font-size:15px;
+    color:var(--ink-55);
+    letter-spacing:.01em;
+  }
+
+  /* ---------- 04 formula ---------- */
+  .formula-card{
+    margin-top:42px;
+    background:var(--teal-soft);
+    padding:46px 54px 50px;
+    border-left:6px solid var(--teal);
+  }
+  .formula{
+    font-family:var(--serif);
+    font-size:82px;
+    line-height:1.08;
+    letter-spacing:-.035em;
+  }
+  .formula .line{display:flex;align-items:baseline;gap:26px;}
+  .formula .sign{
+    display:inline-block;
+    width:52px;
+    flex:none;
+    font-size:52px;
+    color:var(--teal);
+    text-align:center;
+  }
+  .formula .term em{
+    font-style:italic;
+    color:var(--teal);
+  }
+  .formula .line.result .term em{color:var(--coral);}
+
+  /* ---------- 05 discount ---------- */
+  .discount{
+    background:var(--teal-deep);
+    background-image:
+      linear-gradient(rgba(246,241,230,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(246,241,230,.05) 1px, transparent 1px),
+      radial-gradient(circle at 88% 8%, rgba(45,131,128,.55), transparent 46%);
+    background-size:90px 90px, 90px 90px, auto;
+    color:var(--cream);
+  }
+  .discount .top{border-bottom-color:var(--line-light);}
+  .discount .brand-mark{background:var(--cream);}
+  .discount .brand-mark::after{border-color:var(--teal-deep);}
+  .discount .counter{color:rgba(246,241,230,.6);}
+  .discount .label{color:#8FD3CB;}
+  .discount h2 em{color:var(--coral-soft);}
+  .discount .body{color:rgba(246,241,230,.78);}
+  .price-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+    margin-top:48px;
+  }
+  .price-card{
+    border:1px solid rgba(246,241,230,.28);
+    background:rgba(246,241,230,.045);
+    padding:30px 30px 32px;
+    position:relative;
+  }
+  .price-card .k{
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:rgba(246,241,230,.58);
+  }
+  .price-card .vals{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-top:18px;
+    font-family:var(--serif);
+    font-variant-numeric:lining-nums tabular-nums;
+  }
+  .price-card .old{
+    font-size:38px;
+    color:rgba(246,241,230,.45);
+    text-decoration:line-through;
+    text-decoration-thickness:2px;
+  }
+  .price-card .arr{font-size:24px;color:rgba(246,241,230,.45);}
+  .price-card .new{font-size:64px;line-height:1;}
+  .price-card.zero .new{color:var(--coral-soft);}
+  .discount .footer{
+    border-top-color:var(--line-light);
+    color:rgba(246,241,230,.52);
+  }
+  .discount-badge{
+    position:absolute;
+    right:26px;
+    top:-22px;
+    width:86px;
+    height:86px;
+    border-radius:50%;
+    background:var(--coral);
+    color:var(--teal-deep);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:17px;
+    font-weight:800;
+    letter-spacing:.02em;
+    transform:rotate(8deg);
+  }
+
+  /* ---------- 06 profit vs cash ---------- */
+  .invoice-wrap{
+    margin-top:42px;
+    position:relative;
+    padding-right:12px;
+  }
+  .invoice{
+    background:#FFFDF7;
+    border:1px solid var(--line);
+    box-shadow:0 18px 40px rgba(15,43,39,.08);
+    padding:30px 34px 32px;
+    transform:rotate(-1.2deg);
+    position:relative;
+    max-width:840px;
+  }
+  .invoice-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid var(--line);
+    padding-bottom:16px;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--ink-55);
+  }
+  .invoice-amount{
+    font-family:var(--serif);
+    font-size:72px;
+    line-height:1;
+    margin-top:26px;
+    font-variant-numeric:lining-nums tabular-nums;
+    letter-spacing:-.03em;
+  }
+  .invoice-meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-top:22px;
+    font-size:14px;
+    color:var(--ink-55);
+  }
+  .stamp{
+    display:inline-block;
+    border:2px solid var(--coral);
+    color:var(--coral);
+    padding:10px 16px;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    transform:rotate(3.5deg);
+    background:rgba(255,253,247,.65);
+  }
+  .timeline{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-top:34px;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-55);
+  }
+  .timeline .line{
+    flex:1;
+    height:1px;
+    background:repeating-linear-gradient(90deg,var(--ink-55) 0 6px,transparent 6px 13px);
+  }
+  .timeline .dot{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:var(--teal);
+    flex:none;
+  }
+  .timeline .dot.end{background:var(--coral);}
+
+  /* ---------- 07 summary ---------- */
+  .summary{
+    margin-top:46px;
+    border-top:2px solid var(--ink);
+  }
+  .summary-item{
+    display:flex;
+    align-items:baseline;
+    gap:30px;
+    padding:30px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .summary-item .num{
+    font-family:var(--serif);
+    font-size:38px;
+    color:var(--teal);
+    width:64px;
+    flex:none;
+    font-variant-numeric:lining-nums;
+  }
+  .summary-item .name{
+    font-family:var(--serif);
+    font-size:52px;
+    letter-spacing:-.03em;
+    line-height:1.05;
+  }
+  .summary-item .end{
+    margin-left:auto;
+    font-size:26px;
+    color:var(--teal);
+  }
+  .summary-item.hot .name em{font-style:italic;color:var(--coral);}
+
+  /* ---------- 08 CTA ---------- */
+  .cta{
+    background:var(--teal-deep);
+    background-image:
+      radial-gradient(circle at 50% 18%, rgba(45,131,128,.55), transparent 55%),
+      linear-gradient(rgba(246,241,230,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(246,241,230,.04) 1px, transparent 1px);
+    background-size:auto, 90px 90px, 90px 90px;
+    color:var(--cream);
+  }
+  .cta .top{border-bottom-color:var(--line-light);}
+  .cta .brand-mark{background:var(--cream);}
+  .cta .brand-mark::after{border-color:var(--teal-deep);}
+  .cta .counter{color:rgba(246,241,230,.6);}
+  .cta .main{
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding-bottom:10px;
+  }
+  .cta .label{
+    color:#8FD3CB;
+    justify-content:center;
+  }
+  .cta .label::before{display:none;}
+  .cta h2{
+    font-size:74px;
+    line-height:1.06;
+    max-width:820px;
+  }
+  .cta h2 em{color:var(--coral-soft);}
+  .cta-button{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    margin-top:38px;
+    background:var(--coral);
+    color:var(--teal-deep);
+    padding:20px 38px;
+    border-radius:999px;
+    font-size:14px;
+    font-weight:800;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+  }
+  .cta-button .arrow{font-size:20px;line-height:1;}
+  .logo-slot{
+    width:430px;
+    height:158px;
+    margin-top:52px;
+    border:2px dashed rgba(246,241,230,.42);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+  }
+  .logo-slot .wordmark{
+    font-family:var(--serif);
+    font-size:40px;
+    letter-spacing:.16em;
+    color:rgba(246,241,230,.9);
+  }
+  .logo-slot .hint{
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:rgba(246,241,230,.45);
+  }
+  .cta .footer{
+    border-top-color:var(--line-light);
+    color:rgba(246,241,230,.5);
+  }
+
+  /* ---------- export mode ---------- */
+  body.export{background:#fff;}
+  body.export .deck{display:block;padding:0;gap:0;}
+  body.export .slide{display:none;}
+  body.export .slide.is-export{display:flex;}
+
+  @media print{
+    @page{size:1080px 1350px;margin:0;}
+    body{background:#fff;}
+    .deck{display:block;padding:0;gap:0;}
+    .slide{break-after:page;page-break-after:always;display:flex !important;}
+    .slide:last-child{break-after:auto;page-break-after:auto;}
+  }
+</style>
+</head>
+<body>
+<main class="deck">
+
+  <!-- 01 — COVER -->
+  <section class="slide cover" id="s1">
+    <div class="ghost-zero" aria-hidden="true">0</div>
+    <header class="top">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span>Kamelota</div>
+      <div class="counter">01 / 08</div>
+    </header>
+    <div class="main">
+      <div class="kicker">Finanses vienkārši</div>
+      <h1>Apgrozījums aug.<br>Peļņa — <em>nulle</em>.</h1>
+      <p class="sub">Kā tā? Kāpēc peļņa pazūd, kad pārdošana aug.</p>
+      <div class="swipe"><span class="swipe-arrow">→</span> Swipe</div>
+    </div>
+    <footer class="footer">
+      <span>Kamelota</span>
+      <span>8 slaidi · 3 minūtes</span>
+    </footer>
+  </section>
+
+  <!-- 02 — PROBLĒMA -->
+  <section class="slide" id="s2">
+    <header class="top">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span>Kamelota</div>
+      <div class="counter">02 / 08</div>
+    </header>
+    <div class="main">
+      <div class="label">Problēma</div>
+      <h2>Apgrozījums<br>nav <em>peļņa</em>.</h2>
+      <p class="body">Lielāks apgrozījums tikai palielina naudas kustību. Peļņa sākas pēc izmaksām.</p>
+
+      <div class="chart-wrap">
+        <div class="legend">
+          <span><i></i>Apgrozījums</span>
+          <span class="profit"><i></i>Peļņa</span>
+        </div>
+        <svg class="chart" viewBox="0 0 920 250" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M0 42H920M0 108H920M0 174H920M0 240H920" stroke="#0F2B27" stroke-opacity=".08" stroke-width="1"/>
+          <path d="M0 222C150 216 230 174 340 150C470 121 560 96 690 72C780 56 860 46 920 36" stroke="#2D8380" stroke-width="5" stroke-linecap="round"/>
+          <path d="M0 234H920" stroke="#E4634A" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="920" cy="36" r="8" fill="#2D8380"/>
+          <circle cx="920" cy="234" r="8" fill="#E4634A"/>
+        </svg>
+      </div>
+    </div>
+    <footer class="footer">
+      <span>Kamelota</span>
+      <span>Finanses vienkāršā valodā</span>
+    </footer>
+  </section>
+
+  <!-- 03 — PIEMĒRS -->
+  <section class="slide" id="s3">
+    <header class="top">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span>Kamelota</div>
+      <div class="counter">03 / 08</div>
+    </header>
+    <div class="main">
+      <div class="label">Piemērs</div>
+      <h2>Peļņa izkūst<br><em>klusi</em>.</h2>
+
+      <div class="table-head">
+        <span>Pirms → Pēc</span>
+        <span class="units">tūkst. €</span>
+      </div>
+      <div class="table">
+        <div class="row">
+          <div class="name">Pārdošana</div>
+          <div class="from">100</div>
+          <div class="arrow">→</div>
+          <div class="to">120</div>
+        </div>
+        <div class="row">
+          <div class="name">Izmaksas</div>
+          <div class="from">95</div>
+          <div class="arrow">→</div>
+          <div class="to">120</div>
+        </div>
+        <div class="row profit">
+          <div class="name">Peļņa</div>
+          <div class="from">5</div>
+          <div class="arrow">→</div>
+          <div class="to">0</div>
+        </div>
+      </div>
+      <p class="table-note">Pārdošana auga par 20%. Izmaksas — par 26%.</p>
+    </div>
+    <footer class="footer">
+      <span>Kamelota</span>
+      <span>Finanses vienkāršā valodā</span>
+    </footer>
+  </section>
+
+  <!-- 04 — SKAIDROJUMS -->
+  <section class="slide" id="s4">
+    <header class="top">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span>Kamelota</div>
+      <div class="counter">04 / 08</div>
+    </header>
+    <div class="main">
+      <div class="label">Skaidrojums</div>
+      <h2>Vienkārša<br><em>formula</em>.</h2>
+
+      <div class="formula-card">
+        <div class="formula">
+          <div class="line"><span class="term">Ieņēmumi</span></div>
+          <div class="line"><span class="sign">−</span><span class="term">Izmaksas</span></div>
+          <div class="line result"><span class="sign">=</span><span class="term"><em>Peļņa</em></span></div>
+        </div>
+      </div>
+      <p class="body">Ja izmaksas aug ātrāk par ieņēmumiem, peļņa sarūk — pat ja pārdošana aug.</p>
+    </div>
+    <footer class="footer">
+      <span>Kamelota</span>
+      <span>Finanses vienkāršā valodā</span>
+    </footer>
+  </section>
+
+  <!-- 05 — ATLAIDES -->
+  <section class="slide discount" id="s5">
+    <header class="top">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span>Kamelota</div>
+      <div class="counter">05 / 08</div>
+    </header>
+    <div class="main">
+      <div class="label">Skaidrojums + piemērs</div>
+      <h2>Atlaide<br>ēd <em>peļņu</em>.</h2>
+      <p class="body">Ja peļņa ir 10% no cenas, atlaide 10% to iznīcina.</p>
+
+      <div class="price-grid">
+        <div class="price-card">
+          <div class="k">Cena</div>
+          <div class="vals"><span class="old">100 €</span><span class="arr">→</span><span class="new">90 €</span></div>
+        </div>
+        <div class="price-card zero">
+          <div class="discount-badge">−10%</div>
+          <div class="k">Peļņa</div>
+          <div class="vals"><span class="old">10 €</span><span class="arr">→</span><span class="new">0 €</span></div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <span>Kamelota</span>
+      <span>Finanses vienkāršā valodā</span>
+    </footer>
+  </section>
+
+  <!-- 06 — PEĻŅA NAV NAUDA -->
+  <section class="slide" id="s6">
+    <header class="top">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span>Kamelota</div>
+      <div class="counter">06 / 08</div>
+    </header>
+    <div class="main">
+      <div class="label">Skaidrojums</div>
+      <h2>Peļņa nav<br><em>nauda</em>.</h2>
+      <p class="body">Peļņa ir uz papīra. Nauda var būt krājumos vai debitoros.</p>
+
+      <div class="invoice-wrap">
+        <div class="invoice">
+          <div class="invoice-top">
+            <span>Rēķins</span>
+            <span>Nr. 024</span>
+          </div>
+          <div class="invoice-amount">10 000 €</div>
+          <div class="invoice-meta">
+            <span>Klientam apmaksa pēc 60 dienām</span>
+            <span class="stamp">Termiņš: 60 dienas</span>
+          </div>
+        </div>
+        <div class="timeline">
+          <span class="dot"></span>
+          <span>Šodien</span>
+          <span class="line"></span>
+          <span>+60 dienas</span>
+          <span class="dot end"></span>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <span>Kamelota</span>
+      <span>Finanses vienkāršā valodā</span>
+    </footer>
+  </section>
+
+  <!-- 07 — KOPSAVILKUMS -->
+  <section class="slide" id="s7">
+    <header class="top">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span>Kamelota</div>
+      <div class="counter">07 / 08</div>
+    </header>
+    <div class="main">
+      <div class="label">Kopsavilkums</div>
+      <h2>Skaties <em>maržu</em>,<br>nevis apgrozījumu.</h2>
+      <p class="body">Trīs skaitļi, kas atklāj patieso ainu.</p>
+
+      <div class="summary">
+        <div class="summary-item">
+          <div class="num">01</div>
+          <div class="name">Bruto marža</div>
+          <div class="end">→</div>
+        </div>
+        <div class="summary-item">
+          <div class="num">02</div>
+          <div class="name">Izmaksu īpatsvars</div>
+          <div class="end">→</div>
+        </div>
+        <div class="summary-item hot">
+          <div class="num">03</div>
+          <div class="name"><em>Naudas plūsma</em></div>
+          <div class="end">→</div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <span>Kamelota</span>
+      <span>Finanses vienkāršā valodā</span>
+    </footer>
+  </section>
+
+  <!-- 08 — CTA -->
+  <section class="slide cta" id="s8">
+    <header class="top">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span>Kamelota</div>
+      <div class="counter">08 / 08</div>
+    </header>
+    <div class="main">
+      <div class="label">Kamelota</div>
+      <h2>Apgrozījums ir skaļš.<br><em>Peļņa</em> ir klusa.</h2>
+      <div class="cta-button">Sazinies ar mums <span class="arrow">→</span></div>
+      <div class="logo-slot">
+        <div class="wordmark">KAMELOTA</div>
+        <div class="hint">vieta logotipam</div>
+      </div>
+    </div>
+    <footer class="footer">
+      <span>Kamelota</span>
+      <span>Finanses vienkāršā valodā</span>
+    </footer>
+  </section>
+
+</main>
+
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var n = Number(params.get('slide'));
+    if (n >= 1 && n <= 8) {
+      document.body.classList.add('export');
+      var slides = document.querySelectorAll('.slide');
+      slides.forEach(function (slide, i) {
+        slide.classList.toggle('is-export', i === n - 1);
+      });
+    }
+  })();
+</script>
+</body>
+</html>
