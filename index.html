@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PC Store — Продажа мощных компьютеров</title>
+  <meta name="description" content="Готовые и кастомные ПК для игр, работы и творчества. Подберите компьютер под свои задачи и оставьте заявку.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">PC<span>Store</span></a>
+      <nav class="nav">
+        <a href="#catalog">Каталог</a>
+        <a href="#benefits">Преимущества</a>
+        <a href="#request">Заявка</a>
+      </nav>
+      <a href="#request" class="btn btn-sm">Подобрать ПК</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="eyebrow">Сборка и продажа ПК</p>
+          <h1>Мощные компьютеры под ваши задачи</h1>
+          <p class="hero-text">Игровые, рабочие и профессиональные сборки с гарантией, тестированием и поддержкой. Поможем выбрать конфигурацию и доставим готовый ПК.</p>
+          <div class="hero-actions">
+            <a href="#catalog" class="btn">Смотреть сборки</a>
+            <a href="#request" class="btn btn-outline">Оставить заявку</a>
+          </div>
+          <div class="hero-stats">
+            <div><strong>3 года</strong><span>гарантии</span></div>
+            <div><strong>48 часов</strong><span>на сборку</span></div>
+            <div><strong>500+</strong><span>клиентов</span></div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h2>Быстрая заявка</h2>
+          <p>Оставьте контакты — подберём ПК за 15 минут.</p>
+          <form id="quickForm" class="form compact-form" novalidate>
+            <label>
+              Имя
+              <input type="text" name="name" placeholder="Ваше имя" required>
+            </label>
+            <label>
+              Телефон
+              <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+            </label>
+            <label>
+              Цель покупки
+              <select name="goal" required>
+                <option value="">Выберите вариант</option>
+                <option value="Игры">Игры</option>
+                <option value="Работа">Работа</option>
+                <option value="Учёба">Учёба</option>
+                <option value="Монтаж/3D">Монтаж/3D</option>
+              </select>
+            </label>
+            <input type="hidden" name="formType" value="Быстрая заявка">
+            <button type="submit" class="btn btn-full">Получить подбор</button>
+            <p class="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="benefits" class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Почему мы</p>
+          <h2>Покупка ПК без лишних рисков</h2>
+        </div>
+        <div class="cards-grid benefits-grid">
+          <article class="card">
+            <h3>Проверенные комплектующие</h3>
+            <p>Используем надёжные компоненты от официальных поставщиков и подбираем совместимую конфигурацию.</p>
+          </article>
+          <article class="card">
+            <h3>Стресс-тесты перед выдачей</h3>
+            <p>Каждый компьютер проходит проверку температур, стабильности и производительности.</p>
+          </article>
+          <article class="card">
+            <h3>Поддержка после покупки</h3>
+            <p>Помогаем с настройкой, обновлениями и обслуживанием в течение всего гарантийного срока.</p>
+          </article>
+          <article class="card">
+            <h3>Честная цена</h3>
+            <p>Прозрачная смета сборки без скрытых доплат и навязанных услуг.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalog" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Каталог</p>
+          <h2>Популярные сборки</h2>
+        </div>
+        <div class="cards-grid catalog-grid">
+          <article class="card product-card">
+            <div class="badge">Для игр</div>
+            <h3>Start Gamer</h3>
+            <ul>
+              <li>Intel Core i5 / Ryzen 5</li>
+              <li>16 ГБ RAM</li>
+              <li>SSD 1 ТБ</li>
+              <li>GeForce RTX 4060</li>
+            </ul>
+            <p class="price">от 79 990 ₽</p>
+            <a href="#request" class="btn btn-sm btn-full" data-config="Start Gamer">Заказать</a>
+          </article>
+          <article class="card product-card featured">
+            <div class="badge">Хит продаж</div>
+            <h3>Pro Performance</h3>
+            <ul>
+              <li>Intel Core i7 / Ryzen 7</li>
+              <li>32 ГБ RAM</li>
+              <li>SSD 1 ТБ NVMe</li>
+              <li>GeForce RTX 4070</li>
+            </ul>
+            <p class="price">от 129 990 ₽</p>
+            <a href="#request" class="btn btn-sm btn-full" data-config="Pro Performance">Заказать</a>
+          </article>
+          <article class="card product-card">
+            <div class="badge">Для работы</div>
+            <h3>Creator Studio</h3>
+            <ul>
+              <li>Intel Core i9 / Ryzen 9</li>
+              <li>64 ГБ RAM</li>
+              <li>SSD 2 ТБ NVMe</li>
+              <li>GeForce RTX 4080</li>
+            </ul>
+            <p class="price">от 219 990 ₽</p>
+            <a href="#request" class="btn btn-sm btn-full" data-config="Creator Studio">Заказать</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="request" class="section">
+      <div class="container request-grid">
+        <div>
+          <p class="eyebrow">Оставить заявку</p>
+          <h2>Подберём компьютер под ваш бюджет</h2>
+          <p class="section-text">Заполните форму, и мы свяжемся с вами, чтобы уточнить задачи, предложить конфигурацию и рассчитать стоимость.</p>
+          <div class="contact-box">
+            <p><strong>Телефон:</strong> +7 (900) 000-00-00</p>
+            <p><strong>Email:</strong> sales@pcstore.example</p>
+            <p><strong>Время работы:</strong> ежедневно, 10:00–20:00</p>
+          </div>
+        </div>
+        <form id="requestForm" class="form request-form" novalidate>
+          <label>
+            Имя
+            <input type="text" name="name" placeholder="Как к вам обращаться" required>
+          </label>
+          <label>
+            Телефон
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" placeholder="name@example.com">
+          </label>
+          <label>
+            Бюджет
+            <select name="budget">
+              <option value="">Выберите диапазон</option>
+              <option value="до 70 000 ₽">до 70 000 ₽</option>
+              <option value="70 000–120 000 ₽">70 000–120 000 ₽</option>
+              <option value="120 000–200 000 ₽">120 000–200 000 ₽</option>
+              <option value="от 200 000 ₽">от 200 000 ₽</option>
+            </select>
+          </label>
+          <label>
+            Интересующая сборка
+            <input type="text" name="config" id="configInput" placeholder="Например, Pro Performance">
+          </label>
+          <label>
+            Комментарий
+            <textarea name="comment" rows="4" placeholder="Для каких задач нужен ПК, пожелания по комплектующим и т.д."></textarea>
+          </label>
+          <input type="hidden" name="formType" value="Основная заявка">
+          <button type="submit" class="btn btn-full">Отправить заявку</button>
+          <p class="form-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© 2026 PCStore. Продажа и сборка компьютеров.</p>
+      <a href="#request">Оставить заявку</a>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
